@@ -27,15 +27,15 @@ generate () {
 }
 
 convertToMp4 () {
-    xvfb-run -a -s "-screen 0 ${RES}x${DEPTH}" ffmpeg -y -r ${FRAMES} -f image2pipe -loglevel info -vcodec ppm -i /results/gource.ppm -vcodec libx264 -preset medium -vprofile baseline -level 3.0 -pix_fmt yuv420p -threads 0 -bf 0 gource.mp4
+    xvfb-run -a -s "-screen 0 ${RES}x${DEPTH}" ffmpeg -y -r ${FRAMES} -f image2pipe -loglevel info -vcodec ppm -i gource.ppm -vcodec libx264 -preset medium -vprofile baseline -level 3.0 -pix_fmt yuv420p -threads 0 -bf 0 gource.mp4
 }
 
 addAudio () {
-    ffmpeg -y -i gource.mp4 -i /src/gource/background.mp3 -map 0:v:0 -map 1:a:0 -shortest -strict -2 /results/gource-audio.mp4
+  ffmpeg -y -i gource.mp4 -i /tmp/background.mp3 -map 0:v:0 -map 1:a:0 -shortest -strict -2 gource-audio.mp4
 }
 
 generate
 convertToMp4
 addAudio
 
-rm gource.ppm gource.mp4
+rm gource.ppm
