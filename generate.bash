@@ -12,7 +12,7 @@ HIDE="${HIDE:-filenames,progress}"
 GOURCE_ARGS=${GOURCE_ARGS:-}
 
 generate () {
-  screen -dmS recording xvfb-run -a -s "-screen 0 ${RES}x${DEPTH}" gource --auto-skip-seconds 0.1 --stop-at-end --seconds-per-day ${SEC_PER_DAY} --hide ${HIDE} ${GOURCE_ARGS} -o gource.ppm
+  screen -dmS recording xvfb-run -a -s "-screen 0 ${RES}x${DEPTH}" gource --seconds-per-day ${SEC_PER_DAY} --hide ${HIDE} ${GOURCE_ARGS} -o gource.ppm
   lastsize="0"
   filesize="0"
   while [[ "$filesize" -eq "0" || $lastsize -lt $filesize ]] ;
