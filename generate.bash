@@ -31,11 +31,11 @@ convertToMp4 () {
 }
 
 addAudio () {
-  ffmpeg -y -i gource.mp4 -i /tmp/background.mp3 -map 0:v:0 -map 1:a:0 -shortest -strict -2 gource-audio.mp4
+  ffmpeg -y -i gource.mp4 -i /tmp/background.mp3 -map 0:v:0 -map 1:a:0 -shortest -strict -2 gource-latest.mp4
 }
 
 generate
 convertToMp4
 addAudio
 
-rm gource.ppm
+rm gource.ppm gource.mp4
